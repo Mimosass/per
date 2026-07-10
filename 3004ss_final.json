@@ -2,7 +2,7 @@
   "id": "3004ss",
   "name": "三四娱乐",
   "type": "comic",
-  "version": 3,
+  "version": 4,
   "schemaVersion": 1,
   "host": "https://www.3004ss.com",
   "charset": "utf-8",
@@ -18,7 +18,7 @@
   "rateLimit": { "qps": 3, "maxConcurrent": 3 },
   "comic": {
     "readingMode": "webtoon",
-    "maxImageConcurrency": 5
+    "maxImageConcurrency": 3
   },
   "vars": {
     "imageHost": "aimgs.34img.cc"
@@ -214,6 +214,10 @@
       "p1.34img.cc",
       "p2.34img.cc"
     ],
-    "refererStrategy": "host"
+    "refererStrategy": "host",
+    "retry": {
+      "count": 3,
+      "backoffMs": 1000
+    }
   }
 }
