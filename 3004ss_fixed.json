@@ -32,7 +32,7 @@
     "parse": {
       "list": ".excerpt",
       "fields": {
-        "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+        "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
         "title": "h2 a@text",
         "cover": ".focus a img@attr=src",
         "author": ""
@@ -53,7 +53,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         }
@@ -67,7 +67,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         }
@@ -81,7 +81,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         },
@@ -99,7 +99,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         },
@@ -117,7 +117,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         },
@@ -135,7 +135,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         },
@@ -153,7 +153,7 @@
       "parse": {
         "list": ".excerpt",
         "fields": {
-          "id": "h2 a@attr=href##/post/(\\d+)\\.html.*##$1",
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
           "title": "h2 a@text",
           "cover": ".focus a img@attr=src"
         },
@@ -189,7 +189,7 @@
     "parse": {
       "list": "ul li a.chapter-link",
       "fields": {
-        "id": "@attr=href##/post/\\d+/page-(\\d+)\\.html.*##page-$1",
+        "id": "@attr=href##^.*?/post/\\d+/page-(\\d+)\\.html.*##page-$1",
         "title": "@text",
         "url": "@attr=href"
       }
