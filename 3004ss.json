@@ -2,7 +2,7 @@
   "id": "3004ss",
   "name": "三四娱乐",
   "type": "comic",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "host": "https://www.3004ss.com",
   "charset": "utf-8",
@@ -199,10 +199,10 @@
   "page": {
     "request": {
       "action": "fetch",
-      "url": "{{page.url}}"
+      "url": "{{chapter.url}}"
     },
     "parse": {
-      "urls": ".img-placeholder-wrap img@attr=data-src"
+      "pages": ".img-placeholder-wrap img@attr=data-src"
     }
   },
 
