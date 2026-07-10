@@ -1,0 +1,219 @@
+{
+  "id": "3004ss",
+  "name": "三四娱乐",
+  "type": "comic",
+  "version": 2,
+  "schemaVersion": 1,
+  "host": "https://www.3004ss.com",
+  "charset": "utf-8",
+  "iconUrl": "https://www.3004ss.com/wp-content/themes/xiu/images/logo.png",
+  "languages": ["zh"],
+  "contentRating": "nsfw",
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+  },
+  "cookieJar": true,
+  "rateLimit": { "qps": 3, "maxConcurrent": 3 },
+  "comic": {
+    "readingMode": "webtoon",
+    "maxImageConcurrency": 5
+  },
+  "vars": {
+    "imageHost": "aimgs.34img.cc"
+  },
+
+  "search": {
+    "request": {
+      "action": "fetch",
+      "url": "{{host}}/?s={{keyword|encode}}"
+    },
+    "parse": {
+      "list": ".excerpt",
+      "fields": {
+        "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+        "title": "h2 a@text",
+        "cover": ".focus a img@attr=src",
+        "author": ""
+      }
+    },
+    "pagination": {
+      "kind": "page",
+      "urlTemplate": "{{host}}/?s={{keyword|encode}}&paged={{page}}"
+    }
+  },
+
+  "listings": [
+    {
+      "id": "home",
+      "name": "首页推荐",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        }
+      }
+    },
+    {
+      "id": "latest",
+      "name": "最新更新",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        }
+      }
+    },
+    {
+      "id": "meinv",
+      "name": "美女写真",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}/meinv" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        },
+        "pagination": {
+          "kind": "page",
+          "urlTemplate": "{{host}}/meinv/page/{{page}}"
+        }
+      }
+    },
+    {
+      "id": "duanpian",
+      "name": "短篇漫画",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}/item/短篇漫画" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        },
+        "pagination": {
+          "kind": "page",
+          "urlTemplate": "{{host}}/item/短篇漫画/page/{{page}}"
+        }
+      }
+    },
+    {
+      "id": "lianai",
+      "name": "连载漫画",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}/item/连载" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        },
+        "pagination": {
+          "kind": "page",
+          "urlTemplate": "{{host}}/item/连载/page/{{page}}"
+        }
+      }
+    },
+    {
+      "id": "wanjie",
+      "name": "完结漫画",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}/item/完结" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        },
+        "pagination": {
+          "kind": "page",
+          "urlTemplate": "{{host}}/item/完结/page/{{page}}"
+        }
+      }
+    },
+    {
+      "id": "aihqing",
+      "name": "爱情漫画",
+      "kind": "grid",
+      "request": { "action": "fetch", "url": "{{host}}/mh" },
+      "parse": {
+        "list": ".excerpt",
+        "fields": {
+          "id": "h2 a@attr=href##^.*?/post/(\\d+)\\.html.*##$1",
+          "title": "h2 a@text",
+          "cover": ".focus a img@attr=src"
+        },
+        "pagination": {
+          "kind": "page",
+          "urlTemplate": "{{host}}/mh/page/{{page}}"
+        }
+      }
+    }
+  ],
+
+  "detail": {
+    "request": {
+      "action": "fetch",
+      "url": "{{host}}/post/{{book.id}}.html"
+    },
+    "parse": {
+      "fields": {
+        "title": "h1.article-title@text##^(.+?)\\s*(完结|连载)?$##$1",
+        "cover": "div.c-img img@attr=src",
+        "author": "@js: var b=ctx.response.body||''; var m=b.match(/<span class=\"dis\">[^<]*<\\/span>/); return m?m[0].replace(/<[^>]+>/g,'').trim():null;",
+        "description": "@js: var b=ctx.response.body||''; var m=b.match(/<p class=\"text-muted time\">[^<]*<\\/p>/); return m?m[0].replace(/<[^>]+>/g,'').trim():null;",
+        "tags": "header.article-header p.cat@text"
+      }
+    }
+  },
+
+  "chapter": {
+    "request": {
+      "action": "fetch",
+      "url": "{{host}}/post/{{book.id}}.html"
+    },
+    "parse": {
+      "list": "ul li a.chapter-link",
+      "fields": {
+        "id": "@attr=href##^.*?/post/\\d+/page-(\\d+)\\.html.*##page-$1",
+        "title": "@text",
+        "url": "@attr=href"
+      }
+    }
+  },
+
+  "page": {
+    "request": {
+      "action": "fetch",
+      "url": "{{chapter.url}}"
+    },
+    "parse": {
+      "pages": ".img-placeholder-wrap img@attr=data-src"
+    }
+  },
+
+  "imagePipeline": {
+    "allowedImageHosts": [
+      "34img.cc",
+      "aimgs.34img.cc",
+      "imgs.34img.cc",
+      "p1.34img.cc",
+      "p2.34img.cc"
+    ],
+    "refererStrategy": "host"
+  }
+}
